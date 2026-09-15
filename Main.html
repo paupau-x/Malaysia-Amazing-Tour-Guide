@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaysia Travel Guide — Truly Asia</title>
+    <style>
+        :root {
+            --brand-orange: #FF3C00;
+            --dark-navy: #0f172a;
+            --slate-gray: #1e293b;
+            --text-light: #f8fafc;
+            --text-dark: #334155;
+            --bg-light: #f1f5f9;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.025em;
+            user-select: none;
+        }
+
+        .logo span {
+            color: var(--brand-orange);
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .logo span:active {
+            transform: scale(1.4);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--brand-orange);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.85)), url('hero.png') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            color: #e2e8f0;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--brand-orange);
+            margin-top: 0.5rem;
+            border-radius: 2px;
+        }
+
+        /* Spotlights Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-img {
+            position: relative;
+            height: 200px;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: var(--brand-orange);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .card-body h3 {
+            font-size: 1.25rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Explorer Layout */
+        .explorer-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            background: var(--dark-navy);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: var(--text-light);
+        }
+
+        @media (min-width: 768px) {
+            .explorer-box {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background-color: var(--slate-gray);
+            border-radius: 4px;
+        }
+
+        .state-link {
+            background: var(--slate-gray);
+            border: none;
+            color: #94a3b8;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .state-link:hover, .state-link.active {
+            background-color: var(--brand-orange);
+            color: white;
+        }
+
+        .preview-panel {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 900px) {
+            .preview-panel {
+                grid-template-columns: 1fr 1fr; 
+                height: auto;
+                align-items: stretch; 
+            }
+        }
+
+        .panel-view-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 899px) {
+            .panel-view-img {
+                height: 250px;
+            }
+        }
+
+        .panel-view-text {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: rgba(15, 23, 42, 0.6);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        .panel-view-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            border-bottom: 2px solid var(--brand-orange);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .panel-view-text p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        /* Weather & Travel Tips Layout */
+        .tips-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--brand-orange);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box h3 {
+            color: var(--dark-navy);
+            margin-bottom: 0.75rem;
+            font-size: 1.2 flex;
+        }
+
+        /* Fun Facts Grid */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fact-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .fact-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .fact-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Budget Calculator Styling */
+        .budget-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .calculator-card, .result-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .calculator-card h3, .result-card h3 {
+            color: var(--dark-navy);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .calculator-card select, .calculator-card input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #ffffff;
+            margin-top: 0.25rem;
+        }
+
+        .calculator-card select:focus, .calculator-card input:focus {
+            border-color: var(--brand-orange);
+        }
+
+        .result-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--dark-navy);
+            color: #ffffff;
+        }
+
+        .result-card h3 {
+            color: #ffffff;
+        }
+
+        .result-box {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .result-label {
+            display: block;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-price {
+            display: block;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--brand-orange);
+            line-height: 1.2;
+        }
+
+        .result-price.alternative {
+            color: #38bdf8;
+            font-size: 1.75rem;
+        }
+
+        .result-subtitle {
+            display: block;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-top: 0.25rem;
+        }
+
+        .conversion-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        /* Review Feed Section Styling */
+        .reviews-wrapper {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .reviews-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .reviews-list::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .review-item {
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--dark-navy);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--brand-orange);
+        }
+
+        .review-email {
+            color: #64748b;
+        }
+
+        .review-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            white-space: pre-line;
+        }
+
+        .no-reviews-msg {
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            padding: 2rem 0;
+        }
+
+        .btn-clear-reviews {
+            background: none;
+            border: 1px solid #cbd5e1;
+            color: #64748b;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-clear-reviews:hover {
+            background-color: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        /* Contact Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(-20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            font-size: 1.75rem;
+            color: #64748b;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--brand-orange);
+        }
+
+        .modal-box h2 {
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .modal-box p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-navy);
+            font-size: 0.9 grid;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--brand-orange);
+        }
+
+        .btn-submit {
+            background-color: var(--brand-orange);
+            color: white;
+            border: none;
+            padding: 0.85rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #e03500;
+        }
+
+        /* Footer Student Styling */
+        footer {
+            background-color: var(--dark-navy);
+            color: #94a3b8;
+            padding: 3rem 1rem;
+            text-align: center;
+            font-size: 0.95rem;
+            border-top: 1px solid var(--slate-gray);
+        }
+
+        .footer-thanks {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-plead {
+            font-style: italic;
+            color: #cbd5e1;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .footer-rights {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo" id="logo-main">MALAYSIA<span onclick="triggerSecretDot()">.</span></a>
+            <ul class="nav-menu">
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#states">States Explorer</a></li>
+                <li><a href="#tips">Travel Tips</a></li>
+                <li><a href="#facts">Fun Facts</a></li>
+                <li><a href="#budget-calculator">Budget Tool</a></li>
+                <li><a href="#review-feed-section">Visitor Reviews</a></li>
+                <li><a href="#" id="contact-nav-btn">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Malaysia: Truly Asia</h1>
+        <p>Explore an unbroken modern landscape woven together with timeless ancient rainforests, local island archipelagos, and diverse cultural paths.</p>
+    </div>
+
+    <main class="container">
+
+        <section id="experiences">
+            <h2 class="section-title">Iconic Travel Spotlights</h2>
+            <p class="section-subtitle">The top timeless experiences to look for across the Peninsula and Borneo wild.</p>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="kl.png" alt="Kuala Lumpur">
+                        <span class="tag">Urban</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Kuala Lumpur Skyline</h3>
+                        <p>Marvel at the soaring Petronas Twin Towers illuminating the horizon, bustling shopping districts, and colorful street markets.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="sabah.png" alt="Sabah">
+                        <span class="tag">Nature</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Sabah Wilderness</h3>
+                        <p>Climb the majestic peaks of Mount Kinabalu and trek through dense, wildlife-rich pristine green island rainforest systems.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="penang.png" alt="Penang">
+                        <span class="tag">Heritage</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Penang Hawker Culture</h3>
+                        <p>Stroll around George Town paths to find celebrated historical architecture, vibrant street murals, and world-famous street food lane alleys.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="food.png" alt="Nasi Lemak">
+                        <span class="tag">Culinary</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Traditional Nasi Lemak</h3>
+                        <p>Indulge in delicious coconut-infused rice served with classic aromatic spicy sambal chili paste, crispy anchovies, a boiled egg, and fresh cucumbers.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="wildlife.png" alt="Orangutan">
+                        <span class="tag">Eco Protection</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Borneo Wildlife Sanctuaries</h3>
+                        <p>Encounter legendary native orangutans living safely inside specialized protected sanctuary reserves across East Malaysia.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="states">
+            <h2 class="section-title">Complete Regional Explorer</h2>
+            <p class="section-subtitle">Click through every single individual Malaysian state and territory to explore their travel features.</p>
+            
+            <div class="explorer-box">
+                <div class="sidebar-menu">
+                    <button class="state-link active" onclick="showState('kedah')">Kedah (Langkawi)</button>
+                    <button class="state-link" onclick="showState('perak')">Perak (Ipoh Caves)</button>
+                    <button class="state-link" onclick="showState('johor')">Johor (Desaru Coast)</button>
+                    <button class="state-link" onclick="showState('kelantan')">Kelantan (Traditional Arts)</button>
+                    <button class="state-link" onclick="showState('negeri-sembilan')">Negeri Sembilan</button>
+                    <button class="state-link" onclick="showState('perlis')">Perlis (Paddy Fields)</button>
+                    <button class="state-link" onclick="showState('selangor')">Selangor (Batu Caves)</button>
+                    <button class="state-link" onclick="showState('melaka')">Melaka (Historic City)</button>
+                    <button class="state-link" onclick="showState('pahang')">Pahang (Cameron Highlands)</button>
+                    <button class="state-link" onclick="showState('terengganu')">Terengganu (Redang Island)</button>
+                    <button class="state-link" onclick="showState('pulau-pinang')">Pulau Pinang (Penang Island)</button>
+                    <button class="state-link" onclick="showState('sabah-state')">Sabah (Borneo Peaks)</button>
+                    <button class="state-link" onclick="showState('sarawak')">Sarawak (Mulu Caves)</button>
+                    <button class="state-link" onclick="showState('kuala-lumpur')">Kuala Lumpur (Capital FT)</button>
+                    <button class="state-link" onclick="showState('putrajaya')">Putrajaya (Administrative FT)</button>
+                    <button class="state-link" onclick="showState('labuan')">Labuan (Island FT)</button>
+                </div>
+
+                <div class="preview-panel">
+                    <img id="view-img" src="kedah.jpg" alt="Kedah" class="panel-view-img">
+                    <div class="panel-view-text">
+                        <h3 id="view-title">Kedah</h3>
+                        <p id="view-desc">Home to the massive eagle monument at Dataran Lang looking over beautiful blue island horizons in Langkawi. Blends beautiful agricultural plains with premium beach retreats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips">
+            <h2 class="section-title">Weather & Essential Travel Tips</h2>
+            <p class="section-subtitle">How to prepare, dress, and plan your journey according to the tropical climate.</p>
+            
+            <div class="tips-layout">
+                <div class="tip-box">
+                    <h3>☀️ Understanding the Climate</h3>
+                    <p>Malaysia features warm tropical weather all year round, with temperatures ranging from 25°C to 32°C. Humidity is consistently high, so lightweight cotton clothing is highly recommended.</p>
+                </div>
+                <div class="tip-box">
+                    <h3>🌧️ The Monsoon Seasons</h3>
+                    <p>There are two primary monsoons. The <strong>Northeast Monsoon</strong> (November to March) brings heavy rains to the East Coast and Borneo. The <strong>Southwest Monsoon</strong> (May to September) brings lighter rainfall to the West Coast.</p>
+                </div>
+                <div class="tip-box">
+                    <h3>📅 Best Time to Visit</h3>
+                    <p>The best overall window to visit is between <strong>March and October</strong>. During these months, rain patterns drop across the peninsula, making it perfect for exploring islands, national parks, and city centers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="facts">
+            <h2 class="section-title">Fascinating Fun Facts</h2>
+            <p class="section-subtitle">Unique facts that make Malaysia an extraordinary place to visit.</p>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <span class="icon">🌸</span>
+                    <h3>The Giant Rafflesia</h3>
+                    <p>The deep rainforests of Sabah and Sarawak are home to the Rafflesia, the single largest blooming flower on Earth, growing up to 3 feet wide!</p>
+                </div>
+                <div class="fact-card">
+                    <span class="icon">🏰</span>
+                    <h3>Ancient Rainforests</h3>
+                    <p>Taman Negara National Park is estimated to be over 130 million years old—making it older than the Amazon Rainforest.</p>
+                </div>
+                <div class="fact-card">
+                    <span class="icon">🦇</span>
+                    <h3>The Mulu Chambers</h3>
+                    <p>Sarawak's Mulu National Park contains the Sarawak Chamber, the world's largest underground cave room by surface area.</p>
+                </div>
+                <div class="fact-card">
+                    <span class="icon">👑</span>
+                    <h3>Unique Monarchy</h3>
+                    <p>Malaysia is home to a unique rotating monarchy system, where the rulers of nine traditional Malay states take turns being king every five years.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Calculator Section -->
+        <section id="budget-calculator">
+            <h2 class="section-title">Trip Budget & Currency Converter</h2>
+            <p class="section-subtitle">Estimate your travel expenses and instantly convert your currency to Malaysian Ringgit (MYR).</p>
+            
+            <div class="budget-container">
+                <div class="calculator-card">
+                    <h3>Configure Your Budget</h3>
+                    
+                    <div class="form-group">
+                        <label for="calc-currency">Your Home Currency</label>
+                        <select id="calc-currency" onchange="calculateBudget()">
+                            <option value="4.45">USD — US Dollar</option>
+                            <option value="3.30">SGD — Singapore Dollar</option>
+                            <option value="4.80">EUR — Euro</option>
+                            <option value="5.65">GBP — British Pound</option>
+                            <option value="2.95">AUD — Australian Dollar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calc-days">Duration of Stay (Days)</label>
+                        <input type="number" id="calc-days" value="5" min="1" oninput="calculateBudget()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calc-style">Travel Style</label>
+                        <select id="calc-style" onchange="calculateBudget()">
+                            <option value="150">Backpacker / Budget (RM150/day)</option>
+                            <option value="400" selected>Mid-Range Explorer (RM400/day)</option>
+                            <option value="1000">Luxury / Premium (RM1000/day)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Estimated Expenses</h3>
+                    <div class="result-box">
+                        <span class="result-label">Total Required Budget</span>
+                        <span class="result-price" id="total-myr">RM 2,000</span>
+                        <span class="result-subtitle">Malaysian Ringgit</span>
+                    </div>
+                    
+                    <div class="conversion-divider"></div>
+                    
+                    <div class="result-box conversion-box">
+                        <span class="result-label">Cost in Your Currency</span>
+                        <span class="result-price alternative" id="total-foreign">$ 450.00</span>
+                        <span class="result-subtitle" id="foreign-currency-label">USD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Feedback Review Section -->
+        <section id="review-feed-section">
+            <h2 class="section-title">Live Visitor Reviews</h2>
+            <p class="section-subtitle">See what judges and visitors are saying about our project in real time!</p>
+            
+            <div class="reviews-wrapper">
+                <div id="reviews-list-container" class="reviews-list">
+                    <!-- Dynamic review cards populate inside here -->
+                </div>
+                <div style="text-align: right;">
+                    <button class="btn-clear-reviews" onclick="clearAllReviews()">Reset Review Board</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Contact Modal Pop-up Layout -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-box">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <h2>Contact Support & Reviews</h2>
+            <p>Leave us a rating review or message below to test our database board!</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="user-name">Your Name</label>
+                    <input type="text" id="user-name" placeholder="e.g., Ali" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Email Address</label>
+                    <input type="email" id="user-email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-message">Review Message</label>
+                    <textarea id="user-message" rows="4" placeholder="Type your review thoughts here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-thanks">✨ Thank you for visiting our website! ✨</p>
+        <p class="footer-plead">(we spent 3 weekends on this pls give us A+ cikgu 🙏)</p>
+        <p class="footer-rights">&copy; 2026 All Rights Reserved (not really we're just students lol)</p>
+    </footer>
+
+    <script>
+        const stateMap = {
+            kedah: {
+                title: "Kedah",
+                img: "kedah.jpg",
+                desc: "Home to the massive eagle monument at Dataran Lang looking over beautiful blue island horizons in Langkawi. Known as the rice bowl of Malaysia, it blends rural golden paddy horizons with premier beach retreats."
+            },
+            perak: {
+                title: "Perak",
+                img: "perak.jpg",
+                desc: "Renowned for the stunning limestone cave temples surrounding Ipoh. Offers endless historical colonial charm alongside a world-famous old-town white coffee culture and gourmet food roots."
+            },
+            johor: {
+                title: "Johor",
+                img: "johor.jpg",
+                desc: "Showcases the sunny shores, premium golf layouts, and luxury resort beachfronts of the Desaru Coastline. Serves as a bustling dynamic southern gateway connected to Singapore."
+            },
+            kelantan: {
+                title: "Kelantan",
+                img: "kelantan.jpg",
+                desc: "Deeply rooted cultural heartbeat of traditional performing arts, known for iconic Wayang Kulit shadow puppetry, colorful Wau kites, and beautiful intricate regional woodcrafts."
+            },
+            "negeri-sembilan": {
+                title: "Negeri Sembilan",
+                img: "negeri-sembilan.jpg",
+                desc: "Features unique and elegant traditional Minangkabau architecture, immediately recognized by sweeping, upward-curving rooftop designs shaped like buffalo horns."
+            },
+            perlis: {
+                title: "Perlis",
+                img: "perlis.jpg",
+                desc: "The smallest state in Malaysia, offering peaceful, slow-paced countryside cycling trips across endless green rice fields flanked by majestic limestone rock bluffs."
+            },
+            selangor: {
+                title: "Selangor",
+                img: "selangor.jpg",
+                desc: "The economic engine house surrounding the capital, holding the magnificent colossal golden Lord Murugan statue standing proudly at the entrance of the historic Batu Caves."
+            },
+            melaka: {
+                title: "Melaka",
+                img: "melaka.jpg",
+                desc: "A designated UNESCO World Heritage city holding centuries of colonial history. Wander past the famous terracotta-red Dutch Square, Christ Church, and the historic A Famosa fort."
+            },
+            pahang: {
+                title: "Pahang",
+                img: "pahang.jpg",
+                desc: "The largest state in Peninsular Malaysia, hosting the cool, misty Cameron Highlands tea plantations, alpine strawberry farms, and the ancient wild jungles of Taman Negara."
+            },
+            terengganu: {
+                title: "Terengganu",
+                img: "terengganu.jpg",
+                desc: "A coastal paradise boasting some of the clearest waters in Southeast Asia at Redang and Perhentian Islands. Highly celebrated for its traditional sea-faring heritage and songket weaving."
+            },
+            "pulau-pinang": {
+                title: "Pulau Pinang",
+                img: "pulau-pinang.jpg",
+                desc: "Widely regarded as the food capital of Malaysia. George Town combines beautifully preserved British colonial buildings with iconic street murals and legendary hawker markets."
+            },
+            "sabah-state": {
+                title: "Sabah",
+                img: "sabah-state.jpg",
+                desc: "Located on Borneo island, presenting the epic, cloudswept peak of Mount Kinabalu. Offers magnificent wildlife experiences ranging from river safaris to world-class diving at Sipadan Island."
+            },
+            sarawak: {
+                title: "Sarawak",
+                img: "sarawak.jpg",
+                desc: "The Land of the Hornbills. Houses the legendary giant cave network of Mulu National Park, indigenous longhouse communities, and rich river delta coastal ecosystems."
+            },
+            "kuala-lumpur": {
+                title: "Kuala Lumpur",
+                img: "kuala-lumpur.jpg",
+                desc: "The electric federal capital territory. A glittering melting pot where historic Moorish arches sit beside soaring skyscrapers like the Merdeka 118 and Petronas Twin Towers."
+            },
+            putrajaya: {
+                title: "Putrajaya",
+                img: "putrajaya.jpg",
+                desc: "The grand administrative federal capital. Showcases breathtaking, futuristic bridges, sprawling green botanical gardens, and the pink-domed Putra Mosque set across an artificial lake."
+            },
+            labuan: {
+                title: "Labuan",
+                img: "labuan.jpg",
+                desc: "A peaceful island federal territory off the coast of Borneo. Operating as a major international offshore financial hub and a quiet diving getaway famous for historic shipwrecks."
+            }
+        };
+
+        function showState(key) {
+            const look = stateMap[key];
+            if (!look) return;
+
+            document.getElementById('view-img').src = look.img;
+            document.getElementById('view-img').alt = look.title + " Image";
+            document.getElementById('view-title').innerText = look.title;
+            document.getElementById('view-desc').innerText = look.desc;
+
+            const links = document.querySelectorAll('.state-link');
+            links.forEach(l => {
+                l.classList.remove('active');
+                if (l.getAttribute('onclick').includes(key)) {
+                    l.classList.add('active');
+                }
+            });
+        }
+
+        // JS Logic for Secret Logo Button Clicker
+        let secretCounter = 0;
+        function triggerSecretDot() {
+            secretCounter++;
+            if (secretCounter === 3) {
+                alert("✨ Group Assignment Secret unlocked! ✨\n\nThis project was built by two tired Form 3 students using 100% pure brainpower and a lot of iced Milo. Cikgu, if you found this, please bless us with an A+! 🤫🙏");
+                secretCounter = 0;
+            }
+        }
+
+        // Contact Modal Functionality
+        const contactNavBtn = document.getElementById('contact-nav-btn');
+        const contactModal = document.getElementById('contact-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const contactForm = document.getElementById('contact-form');
+
+        contactNavBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModal.classList.add('open');
+        });
+
+        modalCloseBtn.addEventListener('click', () => {
+            contactModal.classList.remove('open');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('open');
+            }
+        });
+
+        // Review Board Data Management Logic (Local Storage)
+        function loadReviews() {
+            const container = document.getElementById('reviews-list-container');
+            // Pull existing storage data or establish empty array state variables
+            const reviews = JSON.parse(localStorage.getItem('visitorReviews')) || [];
+            
+            if (reviews.length === 0) {
+                container.innerHTML = `<p class="no-reviews-msg">No reviews submitted yet. Be the first to type something in the Contact form!</p>`;
+                return;
+            }
+
+            // Loop through data records to construct DOM layout lists
+            container.innerHTML = reviews.map(rev => `
+                <div class="review-item">
+                    <div class="review-meta">
+                        <span class="review-author">👤 ${escapeHTML(rev.name)}</span>
+                        <span class="review-email">${escapeHTML(rev.email)}</span>
+                    </div>
+                    <p class="review-text">${escapeHTML(rev.message)}</p>
+                </div>
+            `).join('');
+        }
+
+        function saveReview(name, email, message) {
+            const reviews = JSON.parse(localStorage.getItem('visitorReviews')) || [];
+            reviews.unshift({ name, email, message }); // Push new entries to top of array checklist
+            localStorage.setItem('visitorReviews', JSON.stringify(reviews));
+            loadReviews();
+        }
+
+        function clearAllReviews() {
+            if (confirm("Are you sure you want to clear the review board?")) {
+                localStorage.removeItem('visitorReviews');
+                loadReviews();
+            }
+        }
+
+        // Helper function to keep data inputs safe from HTML breaks
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        // Handle Form Submit Actions
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const message = document.getElementById('user-message').value;
+            
+            // Save and render entry down into review display board
+            saveReview(name, email, message);
+            
+            alert(`Terima kasih, ${name}! Your review has been saved locally and posted to our live display wall board below! 📝✨`);
+            
+            contactForm.reset();
+            contactModal.classList.remove('open');
+            
+            // Auto scroll down directly to review section feed for visibility
+            document.getElementById('review-feed-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Budget Calculator Functionality
+        function calculateBudget() {
+            const currencySelect = document.getElementById('calc-currency');
+            const selectedRate = parseFloat(currencySelect.value);
+            const selectedText = currencySelect.options[currencySelect.selectedIndex].text.split(' ')[0];
+            
+            const days = parseInt(document.getElementById('calc-days').value) || 0;
+            const costPerDayMYR = parseFloat(document.getElementById('calc-style').value);
+
+            const totalMYR = days * costPerDayMYR;
+            const totalForeign = totalMYR / selectedRate;
+
+            document.getElementById('total-myr').innerText = `RM ${totalMYR.toLocaleString()}`;
+            
+            let symbol = "$";
+            if (selectedText === "EUR") symbol = "€";
+            if (selectedText === "GBP") symbol = "£";
+            
+            document.getElementById('total-foreign').innerText = `${symbol} ${totalForeign.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('foreign-currency-label').innerText = selectedText;
+        }
+
+        // Initialize state variables on DOM startup
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateBudget();
+            loadReviews(); // Display existing browser history logs on startup
+        });
+    </script>
+</body>
+</html>
